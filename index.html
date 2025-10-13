@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Torque Agency</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #f9c200;
+      --secondary-color: #1e293b;
+      /* Darker, premium color */
+      --background-color: #fff8e1;
+
+    }
+
+    html {
+      scroll-behavior: 'smooth';
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      /* Body Font */
+      background-color: var(--background-color);
+      color: var(--secondary-color);
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Orbitron', sans-serif;
+      /* Heading Font */
+      color: var(--secondary-color);
+    }
+
+    .navbar {
+
+      background: transparent !important;
+      box-shadow: none !important;
+      padding-top: 20px;
+    }
+
+    .navbar-container {
+
+      background: transparent;
+      border-radius: 50px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(6px);
+
+      width: fit-content;
+      max-width: 90%;
+      padding: 10px 20px;
+    }
+
+    .navbar-brand {
+
+      padding: 10px 0;
+      line-height: 1;
+      /* ADDITION 1: Ensure Brand is always primary color for contrast and design */
+      color: var(--primary-color) !important;
+    }
+
+    .navbar-nav .nav-link {
+
+      padding: 10px 15px !important;
+      margin: 0 5px;
+      border-radius: 30px;
+      transition: background-color 0.3s, color 0.3s, transform 0.3s;
+      font-weight: 600;
+      /* CHANGE 1: Set default link color to white to be visible on the dark hero background */
+      color: #f9c200 !important;
+    }
+
+    .navbar-nav .nav-link:hover {
+      background-color: var(--primary-color);
+      /* CHANGE 2: Ensure hover text color is dark for contrast with primary-color background */
+      color: var(--secondary-color) !important;
+      transform: translateY(-1px);
+    }
+
+    /* ADDITION 2: Fix for the dark hamburger icon on dark background */
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(255, 255, 255)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    }
+
+    /* -------------------------------------------------------- */
+
+
+
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      color: white;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      text-shadow: 0 0 15px rgba(249, 194, 0, 0.8), 0 0 5px rgba(0, 0, 0, 0.5);
+      letter-spacing: 2px;
+    }
+
+    .hero p {
+      font-size: 1.4rem;
+      color: #e2e8f0;
+    }
+
+    .btn-main {
+      background-color: var(--primary-color);
+      color: var(--secondary-color);
+      border: none;
+      padding: 15px 40px;
+      font-weight: 700;
+      border-radius: 50px;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      box-shadow: 0 5px 15px rgba(249, 194, 0, 0.4);
+    }
+
+    .btn-main:hover {
+      background-color: #ffda47;
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(249, 194, 0, 0.6);
+    }
+
+    /* Section Styles */
+    section {
+      padding: 100px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .section-title h2 {
+      font-weight: 700;
+      font-size: 2.5rem;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background-color: var(--primary-color);
+      border-radius: 2px;
+    }
+
+    .section-title span {
+      color: var(--primary-color);
+    }
+
+
+    .about img {
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transform: rotate(1deg);
+      transition: transform 0.5s;
+    }
+
+    .about img:hover {
+      transform: rotate(0deg) scale(1.02);
+    }
+
+    /* Services */
+    .service-card {
+      background: white;
+      border: 1px solid #e0e0e0;
+      border-radius: 20px;
+      padding: 40px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      height: 100%;
+    }
+
+    .service-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      border-color: var(--primary-color);
+    }
+
+    .service-card i {
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    /* Parallax Section */
+    .parallax {
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 120px 0;
+      position: relative;
+    }
+
+    .parallax::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(30, 41, 59, 0.6);
+    }
+
+    .parallax h2 {
+      position: relative;
+      z-index: 2;
+      font-size: 3rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Portfolio */
+    .portfolio .card {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+    }
+
+    .portfolio img {
+      transition: transform 0.6s ease;
+    }
+
+    .portfolio .card:hover img {
+      transform: scale(1.1);
+    }
+
+    .portfolio .card:hover {
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Testimonials - Stylish Cards Redesign */
+    .testimonial {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 20px;
+      padding: 40px;
+      margin-top: 20px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+      transition: all 0.4s ease-in-out;
+      position: relative;
+      height: 100%;
+    }
+
+    .testimonial:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(30, 41, 59, 0.15);
+    }
+
+    .testimonial .quote-icon {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      opacity: 0.7;
+    }
+
+    .testimonial p {
+      margin-top: 10px;
+      font-style: italic;
+      color: var(--secondary-color);
+      font-size: 1.1rem;
+    }
+
+    .testimonial h6 {
+      color: var(--primary-color);
+      font-weight: 700 !important;
+      margin-top: 20px;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .testimonial h6::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--primary-color);
+    }
+
+    /* Contact Section Styling */
+    .contact {
+      background-color: white;
+      border-top: 5px solid var(--primary-color);
+      box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--secondary-color);
+      color: #a0aec0;
+      padding: 50px 0;
+    }
+
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: #ffda47;
+      text-decoration: none;
+    }
+
+    /* Social Icon Styles */
+    .social-icons a {
+      color: white;
+      font-size: 1.5rem;
+      margin: 0 10px;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: var(--primary-color);
+      transform: scale(1.2) translateY(-2px);
+    }
+
+    .highlight {
+      color: #f4b400;
+      position: relative;
+    }
+
+    .highlight::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 3px;
+      background: #f4b400;
+      border-radius: 2px;
+    }
+
+
+    .inst-header h5 {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
+    .category-scroll {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 10px 5px;
+    }
+
+    .category-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .category-pill {
+      flex: 0 0 auto;
+      background-color: #fff8e1;
+      color: #444;
+      font-weight: 500;
+      border-radius: 50px;
+      padding: 12px 24px;
+      font-size: 0.95rem;
+      border: 1px solid #ffe08a;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .category-pill:hover {
+      background-color: #f4b400;
+      color: white;
+      box-shadow: 0 4px 12px rgba(244, 180, 0, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .view-more-link {
+      color: #f4b400;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .view-more-link:hover {
+      color: #e0a000;
+      text-decoration: underline;
+    }
+
+    /* Institute Cards */
+    .inst-card {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 20px;
+      backdrop-filter: blur(6px);
+      border: 1px solid #fff3d4;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .inst-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(244, 180, 0, 0.3);
+      border-color: #ffe58a;
+    }
+
+    .inst-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .inst-logo {
+      background: #f4b400;
+      color: white;
+      font-weight: 700;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(244, 180, 0, 0.4);
+      font-size: 1rem;
+    }
+
+    .btn-outline-warning {
+      border-color: #f4b400;
+      color: #f4b400;
+      transition: 0.3s;
+    }
+
+    .btn-outline-warning:hover {
+      background-color: #f4b400;
+      color: white;
+    }
+
+    .btn-warning {
+      background-color: #f4b400;
+      border: none;
+    }
+
+    .btn-warning:hover {
+      background-color: #e0a000;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top d-flex justify-content-center">
+    <div class="navbar-container container-fluid d-flex justify-content-between align-items-center">
+
+      <a class="navbar-brand fw-bold" href="#home" style="font-family: 'Orbitron', sans-serif;">SavvyPool</a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+        aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-center" id="navMenu">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item"><a href="#home" class="nav-link active" aria-current="page">Home</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+          <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="home" class="hero">
+    <div class="container">
+      <h1 class="text-white">Welcome to <span class="text-warning">SavvyPool</span></h1>
+      <p class="mt-4">Explore countless courses from handpicked e-learning and offline institutions all in one place!
+      </p>
+      <a href="#about" class="btn btn-main mt-5">Initiate Journey</a>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>About <span>Us</span></h2>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-md-6 mb-4 mb-md-0">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=700&q=80"
+            class="img-fluid" alt="Team working in an office" />
+        </div>
+        <div class="col-md-6">
+          <h3 class="fw-bold">Empowering students worldwide</h3>
+          <p class="lead text-muted">We are a education referral agency dedicated to connecting ambitious students with
+            premier institutes. Our mission is to simplify the complex landscape of international education, offering
+            **expert guidance** and streamlined admission processes at every critical juncture.</p>
+          <p>We believe that education is the ultimate force multiplier, and we're here to apply the maximum *Torque* to
+            your academic career, ensuring your future is not just bright, but **limitless**.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="parallax"
+    style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80');">
+    <h2 class="fw-bold text-white">Building Bright Futures</h2>
+  </div>
+
+  <section id="services" class="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Core <span>Services</span></h2>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="service-card text-center">
+            <i class="bi bi-globe"></i>
+            <h5>Find the right program faster</h5>
+            <p class="text-muted">Stop spending hours searching — discover verified courses that match your goals.</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="service-card text-center">
+            <i class="bi bi-people"></i>
+            <h5>Learn from trusted institutes</h5>
+            <p class="text-muted">Explore short-term and long-term programs from recognized institutes across online
+               and offline.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="service-card text-center">
+            <i class="bi bi-card-checklist"></i>
+            <h5>Grow your skill portfolio</h5>
+            <p class="text-muted">Earn certifications that help you stand out in your career or academics.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="parallax"
+    style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80');">
+    <h2 class="fw-bold text-white">Your Journey Begins Here</h2>
+  </div>
+
+  <section id="explore" class="py-5" style="background: linear-gradient(180deg, #fffdf4, #ffffff);">
+    <div class="container">
+
+      <div class="text-center mb-4">
+        <h2 class="fw-bold text-dark">Popular <span class="highlight">Categories</span></h2>
+
+      </div>
+
+      <div class="category-scroll mb-4">
+        <span class="category-pill">Technology</span>
+        <span class="category-pill">Business</span>
+        <span class="category-pill">Design</span>
+        <span class="category-pill">Language</span>
+        <span class="category-pill">Data Science</span>
+        <span class="category-pill">Finance</span>
+        <span class="category-pill">Marketing</span>
+        <span class="category-pill">Engineering</span>
+        <span class="category-pill">Health & Fitness</span>
+        <span class="category-pill">Photography</span>
+        <span class="category-pill">Music</span>
+        <span class="category-pill">Psychology</span>
+        <span class="category-pill">Architecture</span>
+        <span class="category-pill">Hospitality</span>
+        <span class="category-pill">AI & ML</span>
+        <span class="category-pill">Law</span>
+      </div>
+
+      <div class="text-center mb-5">
+        <a href="institute.html" class="view-more-link">View More Categories →</a>
+      </div>
+
+      <div class="text-center mb-5">
+        <h2 class="fw-bold text-dark">Top <span class="highlight">Institutes</span></h2>
+
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4 col-sm-6 h-100">
+          <div class="inst-card p-4 shadow-sm d-flex flex-column h-100">
+            <div class="inst-header mb-3">
+              <div class="inst-logo">
+                <span class="logo-text">OX</span>
+              </div>
+              <div>
+                <h5 class="fw-bold mb-0">Oxford Academy</h5>
+                <small class="text-muted">India</small>
+              </div>
+            </div>
+            <div class="inst-body flex-grow-1">
+              <p class="text-muted small mb-3">One of the world’s leading institutions offering global-standard online
+                programs.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="badge bg-warning text-dark fw-semibold px-3 py-2 rounded-pill">32 Courses</span>
+                <span class="rating text-warning">⭐ 4.8</span>
+              </div>
+            </div>
+            <div class="text-center mt-4">
+              <button class="btn btn-outline-warning rounded-pill px-4 py-2 fw-semibold">Explore Courses</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 h-100">
+          <div class="inst-card p-4 shadow-sm d-flex flex-column h-100">
+            <div class="inst-header mb-3">
+              <div class="inst-logo">
+                <span class="logo-text">SG</span>
+              </div>
+              <div>
+                <h5 class="fw-bold mb-0">Stanford Global</h5>
+                <small class="text-muted">India</small>
+              </div>
+            </div>
+            <div class="inst-body flex-grow-1">
+              <p class="text-muted small mb-3">A world-class research university providing innovation and leadership in
+                education.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="badge bg-warning text-dark fw-semibold px-3 py-2 rounded-pill">25 Courses</span>
+                <span class="rating text-warning">⭐ 4.7</span>
+              </div>
+            </div>
+            <div class="text-center mt-4">
+              <button class="btn btn-outline-warning rounded-pill px-4 py-2 fw-semibold">Explore Courses</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 h-100">
+          <div class="inst-card p-4 shadow-sm d-flex flex-column h-100">
+            <div class="inst-header mb-3">
+              <div class="inst-logo">
+                <span class="logo-text">DT</span>
+              </div>
+              <div>
+                <h5 class="fw-bold mb-0">Delhi Tech Institute</h5>
+                <small class="text-muted">India</small>
+              </div>
+            </div>
+            <div class="inst-body flex-grow-1">
+              <p class="text-muted small mb-3">A premier Indian institution offering courses in technology and business
+                management.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="badge bg-warning text-dark fw-semibold px-3 py-2 rounded-pill">18 Courses</span>
+                <span class="rating text-warning">⭐ 4.6</span>
+              </div>
+            </div>
+            <div class="text-center mt-4">
+              <button class="btn btn-outline-warning rounded-pill px-4 py-2 fw-semibold">Explore Courses</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-5">
+        <a class="btn btn-warning text-white px-4 py-2 rounded-pill fw-semibold shadow-sm" href="institute.html">View
+          More Institutes</a>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+      <div class="section-title">
+        <h2>Client <span>Feedback</span></h2>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="testimonial">
+            <i class="bi bi-quote quote-icon"></i>
+            <p>“Torque made my dream of studying abroad come true! Their team guided me through everything from
+              selection to acceptance with incredible professionalism and support.”</p>
+            <h6 class="mt-3">— Sarah Johnson</h6>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="testimonial">
+            <i class="bi bi-quote quote-icon"></i>
+            <p>“Excellent service and a highly professional team. The personalized counseling program truly set them
+              apart and helped me secure a scholarship. Highly recommend!”</p>
+            <h6 class="mt-3">— Aman Verma</h6>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="testimonial">
+            <i class="bi bi-quote quote-icon"></i>
+            <p>“The best decision I made was trusting Torque with my admission process. They simplified the bureaucratic
+              steps and were always available for questions. Thank you!”</p>
+            <h6 class="mt-3">— Linda Smith</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container text-center">
+      <div class="section-title">
+        <h2>Connect <span>With Us</span></h2>
+      </div>
+      <p class="lead">Ready to accelerate your academic career? Reach out and let’s start your journey to a world-class
+        education today.</p>
+      <a href="mailto:info@torqueagency.com" class="btn btn-main mt-4">Initiate Consultation</a>
+
+    </div>
+  </section>
+
+  <footer class="text-center">
+    <div class="container">
+      <div class="social-icons mb-4">
+        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        <a href="#" aria-label="X/Twitter"><i class="bi bi-twitter-x"></i></a>
+      </div>
+
+      <p class="mb-0">SavvyPool | Education Partner</p>
+      <p class="mt-2"><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+      <p class="mt-3 text-muted" style="font-size: 0.8rem;">© 2025 SavvyPool. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

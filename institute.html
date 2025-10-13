@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Digital Marketing</title>
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+ <style>
+  /* Color Palette:
+   --primary-yellow: #ffc107;
+   --light-yellow: #fff8e1;
+   --dark-gray: #333333;
+   --medium-gray: #666666;
+  */
+
+  body {
+   font-family: 'Poppins', sans-serif;
+   background: #f8f9fa; /* Lighter, cleaner background */
+   margin: 0;
+   padding: 40px;
+   color: var(--dark-gray);
+  }
+
+  h2 {
+   font-size: 34px;
+   font-weight: 700;
+   margin-bottom: 50px;
+   color: #333333;
+   text-align: center;
+   text-transform: capitalize; /* More modern than full uppercase */
+   letter-spacing: 0.5px;
+   border-bottom: 3px solid #ffc107; /* Primary color line */
+   display: inline-block;
+   padding-bottom: 5px;
+   max-width: 100%;
+   width: 350px;
+  }
+  
+  .title-container {
+   text-align: center;
+  }
+
+  .academy-list {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+   gap: 30px;
+   max-width: 1200px;
+   margin: auto;
+  }
+
+  .academy-card {
+   background: #ffffff;
+   border-radius: 12px;
+   padding: 25px;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Softer shadow */
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+   border-top: 5px solid #ffc107; /* Highlight with primary color */
+  }
+
+  .academy-card:hover {
+   transform: translateY(-5px);
+   box-shadow: 0 10px 20px rgba(255, 193, 7, 0.3); /* Yellow hover effect */
+  }
+
+  .academy-header {
+   display: flex;
+   align-items: center;
+   gap: 15px;
+   margin-bottom: 10px;
+  }
+  
+  .academy-logo-container {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+  }
+
+  /* New Logo/Image Styling */
+  .academy-image {
+   width: 60px;
+   height: 60px;
+   border-radius: 8px; /* Square with soft corners for image */
+   object-fit: cover;
+   border: 1px solid #eee;
+  }
+
+  .academy-title {
+   font-size: 22px;
+   font-weight: 600;
+   color: #333333;
+   line-height: 1.3;
+  }
+
+  .academy-desc {
+   font-size: 15px;
+   color: #666666;
+   line-height: 1.6;
+   flex-grow: 1; /* Allows description to take available space */
+  }
+
+  .offers {
+   font-size: 14px;
+   font-weight: 500;
+   padding-top: 15px;
+   border-top: 1px dashed #e0e0e0;
+   display: flex;
+   flex-wrap: wrap;
+   gap: 8px;
+   align-items: center;
+  }
+
+  .offers span {
+   display: inline-block;
+   background: #ffc107; /* Use primary color for background */
+   color: #333333; /* Dark text for contrast */
+   padding: 6px 10px;
+   border-radius: 6px;
+   font-size: 13px;
+   font-weight: 500;
+   transition: background 0.2s ease;
+  }
+
+  .offers span:hover {
+   background: #e0a800;
+   color: #ffffff;
+  }
+  
+  /* View More Button Styling */
+  .view-more {
+   display: inline-block;
+   margin-left: 5px;
+   text-decoration: none;
+   color: #0d6efd; /* Use a standard link color */
+   font-weight: 600;
+   font-size: 13px;
+   transition: color 0.2s ease;
+  }
+
+  .view-more:hover {
+   color: #0a58ca;
+   text-decoration: underline;
+  }
+
+  /* Back button */
+  .back-btn {
+   display: inline-block;
+   margin-bottom: 30px;
+   padding: 10px 20px;
+   background: #ffc107; /* Use primary color */
+   color: #333333;
+   font-size: 15px;
+   font-weight: 600;
+   border-radius: 5px;
+   text-decoration: none;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   transition: all 0.3s ease;
+  }
+
+  .back-btn:hover {
+   background: #e0a800;
+   color: #fff;
+   transform: translateY(-2px);
+  }
+ </style>
+</head>
+<body>
+
+ <a href="index.html" class="back-btn">← Back to Categories</a>
+ 
+ <div class="title-container">
+  <h2>Digital Marketing Academies</h2>
+ </div>
+
+ <div class="academy-list">
+    <div class="academy-card">
+   <div class="academy-header">
+    <div class="academy-logo-container">
+     <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80" alt="Opentutor Logo" class="academy-image">
+    </div>
+    <div class="academy-title">Opentutor Digital Academy</div>
+   </div>
+   <p class="academy-desc">
+    Largest Digital Marketing Academy in Kannur offering an agency-based digital marketing course 
+    designed with a modern and reliable syllabus.
+   </p>
+   <div class="offers">
+    <span>Digital Marketing</span>
+    <a href="#" class="view-more">+ More</a>
+
+   </div>
+  </div>
+
+    <div class="academy-card">
+   <div class="academy-header">
+    <div class="academy-logo-container">
+     <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80" alt="Lime Tea Logo" class="academy-image">
+    </div>
+    <div class="academy-title">Lime Tea Creative Academy</div>
+   </div>
+   <p class="academy-desc">
+    Hands-on training equips you with the skills needed to excel in today’s digital world, 
+    whether you’re starting fresh or advancing your career.
+   </p>
+   <div class="offers">
+    <span>Digital Marketing</span>
+    <span>Graphic Designing</span>
+    <a href="#" class="view-more">+ More</a>
+
+   </div>
+  </div>
+
+    <div class="academy-card">
+   <div class="academy-header">
+    <div class="academy-logo-container">
+     <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80" alt="NextFrame Logo" class="academy-image">
+    </div>
+    <div class="academy-title">NextFrame Institute</div>
+   </div>
+   <p class="academy-desc">
+    Learn with industry experts and gain practical exposure through real-time marketing campaigns 
+    and analytics projects.
+   </p>
+   <div class="offers">
+    <span>Digital Marketing</span>
+    <span>SEO</span>
+    <span>Content Writing</span>
+    <a href="#" class="view-more">+ More</a>
+   </div>
+  </div>
+
+    <div class="academy-card">
+   <div class="academy-header">
+    <div class="academy-logo-container">
+     <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80" alt="Digital Masters Logo" class="academy-image">
+    </div>
+    <div class="academy-title">Digital Masters Hub</div>
+   </div>
+   <p class="academy-desc">
+    A fast-growing academy offering personalized mentorship and internship programs 
+    for digital enthusiasts.
+   </p>
+   <div class="offers">
+    <span>Digital Marketing</span>
+    <span>Google Ads</span>
+    <span>Social Media</span>
+    <a href="#" class="view-more">+ More</a>
+   </div>
+  </div>
+
+    <div class="academy-card">
+   <div class="academy-header">
+    <div class="academy-logo-container">
+     <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80" alt="Vision Ignite Logo" class="academy-image">
+    </div>
+    <div class="academy-title">Vision Ignite Academy</div>
+   </div>
+   <p class="academy-desc">
+    Industry-oriented training with placement support and updated syllabus aligned with global marketing standards.
+   </p>
+   <div class="offers">
+    <span>Digital Marketing</span>
+    <span>Graphic Designing</span>
+    <span>SEO</span>
+    <a href="#" class="view-more">+ More</a>
+   </div>
+  </div>
+ </div>
+
+</body>
+</html>
